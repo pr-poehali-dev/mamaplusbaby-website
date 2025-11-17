@@ -6,27 +6,27 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import BookingDialog from "@/components/BookingDialog";
 
 const Index = () => {
-  const scheduleGroups = [
+  const schedule = [
     {
-      age: "0-6 месяцев",
+      title: "Утренние занятия",
       color: "bg-[#FDE1D3]",
       days: "Понедельник, Среда, Пятница",
       time: "10:00 - 11:00",
       description: "Мягкие упражнения для восстановления после родов"
     },
     {
-      age: "6-12 месяцев",
+      title: "Дневные занятия",
       color: "bg-[#E5DEFF]",
       days: "Вторник, Четверг",
-      time: "11:30 - 12:30",
-      description: "Активные занятия с малышами, которые начинают ползать"
+      time: "14:00 - 15:00",
+      description: "Активные тренировки с малышами"
     },
     {
-      age: "1-2 года",
+      title: "Вечерние занятия",
       color: "bg-[#FFDEE2]",
       days: "Среда, Пятница",
-      time: "15:00 - 16:00",
-      description: "Веселые игровые тренировки для активных малышей"
+      time: "17:00 - 18:00",
+      description: "Занятия для работающих мам"
     }
   ];
 
@@ -121,26 +121,26 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Расписание занятий</h2>
-            <p className="text-lg text-muted-foreground">Группы разделены по возрасту малышей для максимального комфорта</p>
+            <p className="text-lg text-muted-foreground">Выберите удобное время для вас и вашего малыша</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {scheduleGroups.map((group, index) => (
+            {schedule.map((slot, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-scale-in rounded-3xl" style={{animationDelay: `${index * 100}ms`}}>
                 <CardHeader>
-                  <div className={`${group.color} rounded-full w-16 h-16 flex items-center justify-center text-2xl mb-4`}>
+                  <div className={`${slot.color} rounded-full w-16 h-16 flex items-center justify-center text-2xl mb-4`}>
                     👶
                   </div>
-                  <CardTitle className="text-2xl">{group.age}</CardTitle>
-                  <CardDescription className="text-base">{group.description}</CardDescription>
+                  <CardTitle className="text-2xl">{slot.title}</CardTitle>
+                  <CardDescription className="text-base">{slot.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Icon name="Calendar" size={18} className="text-primary" />
-                    <span className="text-sm">{group.days}</span>
+                    <span className="text-sm">{slot.days}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Icon name="Clock" size={18} className="text-primary" />
-                    <span className="text-sm font-semibold">{group.time}</span>
+                    <span className="text-sm font-semibold">{slot.time}</span>
                   </div>
                 </CardContent>
               </Card>

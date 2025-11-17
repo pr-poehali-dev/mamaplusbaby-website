@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import Icon from "@/components/ui/icon";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -31,7 +31,6 @@ const BookingDialog = ({
     name: "",
     phone: "",
     email: "",
-    ageGroup: "",
     comment: ""
   });
 
@@ -91,24 +90,6 @@ const BookingDialog = ({
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="ageGroup">Возраст малыша *</Label>
-              <Select
-                value={formData.ageGroup}
-                onValueChange={(value) => setFormData({ ...formData, ageGroup: value })}
-                required
-              >
-                <SelectTrigger id="ageGroup">
-                  <SelectValue placeholder="Выберите возрастную группу" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="0-6">0-6 месяцев</SelectItem>
-                  <SelectItem value="6-12">6-12 месяцев</SelectItem>
-                  <SelectItem value="12-24">1-2 года</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
 
             <div className="space-y-2">

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import BookingDialog from "@/components/BookingDialog";
 
 const Index = () => {
   const scheduleGroups = [
@@ -71,7 +72,7 @@ const Index = () => {
             <a href="#trainer" className="text-sm font-medium hover:text-primary transition-colors">Тренер</a>
             <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
           </nav>
-          <Button className="rounded-full">Записаться</Button>
+          <BookingDialog buttonText="Записаться" className="rounded-full" />
         </div>
       </header>
 
@@ -88,10 +89,16 @@ const Index = () => {
                 Специальная программа для мам с детьми от 0 до 2 лет. Безопасно, эффективно и с заботой о вас и вашем малыше.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-all">
-                  <Icon name="Calendar" className="mr-2" size={20} />
-                  Записаться на занятие
-                </Button>
+                <BookingDialog 
+                  buttonText="Записаться на занятие"
+                  size="lg" 
+                  className="rounded-full shadow-lg hover:shadow-xl transition-all"
+                >
+                  <Button size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-all">
+                    <Icon name="Calendar" className="mr-2" size={20} />
+                    Записаться на занятие
+                  </Button>
+                </BookingDialog>
                 <Button size="lg" variant="outline" className="rounded-full">
                   <Icon name="Phone" className="mr-2" size={20} />
                   Позвонить
@@ -169,9 +176,11 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-6 rounded-full" variant={price.popular ? "default" : "outline"}>
-                    Купить абонемент
-                  </Button>
+                  <BookingDialog asChild>
+                    <Button className="w-full mt-6 rounded-full" variant={price.popular ? "default" : "outline"}>
+                      Купить абонемент
+                    </Button>
+                  </BookingDialog>
                 </CardContent>
               </Card>
             ))}
@@ -340,10 +349,12 @@ const Index = () => {
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
-                  <Button className="w-full mt-6 rounded-full" size="lg">
-                    <Icon name="Send" className="mr-2" size={20} />
-                    Записаться сейчас
-                  </Button>
+                  <BookingDialog asChild>
+                    <Button className="w-full mt-6 rounded-full" size="lg">
+                      <Icon name="Send" className="mr-2" size={20} />
+                      Записаться сейчас
+                    </Button>
+                  </BookingDialog>
                 </CardContent>
               </Card>
             </div>
